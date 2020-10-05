@@ -1,0 +1,189 @@
+.nav__container {
+  position: relative;
+  width: 100%;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  text-align: center;
+  grid-template-columns: auto;
+  min-height: 3rem;
+  list-style: none;
+  background-color: $colorDarkDark;
+  color: $colorPrimary;
+  border-bottom: 2px solid $colorBrightDark;
+  @media screen and (max-width: $phoneBreakpoint) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.nav__logo {
+  background: $colorPrimary;
+  color: $colorDark;
+  width: 100%;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  cursor: pointer;
+  & img {
+    height: 6rem;
+  }
+}
+
+.nav__links {
+  margin: auto;
+  list-style: none;
+  display: flex;
+  margin: 0;
+}
+
+.nav__elem {
+  cursor: pointer;
+  padding: 0 3rem;
+  &:hover {
+    color: $colorPrimary;
+  }
+}
+
+.border-top--dark {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px dotted $colorDark;
+}
+
+.is-h-centered {
+  display: flex;
+  justify-content: center;
+}
+
+.grid__container {
+  &--2c {
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  &--3c {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+  }
+}
+
+footer {
+  height: 5rem;
+}
+
+.footer__container {
+  padding: 0.5rem;
+  border-top: 1px dotted $colorBright;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  list-style: none;
+  flex-direction: row;
+  display: flex;
+  justify-content: center;
+  & li {
+    padding: 0 2rem;
+    cursor: pointer;
+  }
+}
+
+.card__container {
+  max-width: $phoneBreakpoint;
+  background-color: $colorBright;
+  color: $colorDark;
+  border-radius: 1rem;
+  margin: 1.4rem auto;
+  padding: 1.4rem;
+  &--primary {
+    background-color: $colorPrimary;
+    color: $colorDark;
+  }
+}
+
+button {
+  margin: 0;
+  padding: 0;
+}
+
+.btn {
+  border: none;
+  cursor: pointer;
+  border-radius: 1rem;
+  margin: 1rem;
+  padding: 1rem;
+  &--primary {
+    background-color: $colorPrimary;
+    color: $colorDark;
+  }
+  &--disabled {
+    color: $colorBrightDark;
+    background-color: $colorDarkBright;
+    cursor: not-allowed;
+  }
+}
+
+@for $i from 1 through 5 {
+  .is-darkish--#{$i} {
+    background: darken($colorBright, $i * 5%);
+  }
+}
+
+.is-ghost {
+  background: transparent;
+  border: 1px solid $colorDark;
+}
+
+.is-mini {
+  margin: 0.4rem auto;
+  padding: 0.4rem;
+}
+
+.is-offset {
+  margin-top: -3rem;
+  max-width: calc(#{$phoneBreakpoint} - 2rem);
+}
+
+.is-primary {
+  background-color: $colorPrimary;
+  color: $colorDark;
+}
+
+.is-dark {
+  background-color: $colorDark;
+  color: $colorBright;
+}
+
+.dotted {
+  &--bottom {
+    border-bottom: 1px dotted $colorDark;
+  }
+}
+
+.pos-rel {
+  position: relative;
+}
+
+.payment-container {
+  min-width: 7rem;
+  padding: 0.5rem;
+
+  &__image {
+    min-height: 3rem;
+    background-repeat: no-repeat;
+    background-position: center;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &--paypal {
+    background-image: linear-gradient(
+      rgba(104, 155, 208, 0.4),
+      rgba(41, 54, 136, 0.4)
+    );
+  }
+  &--invoice {
+    background-image: linear-gradient($colorBright, $colorPrimary);
+  }
+}

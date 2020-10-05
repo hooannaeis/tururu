@@ -1,0 +1,21 @@
+$colorPrimary: #41ddf1;
+$colorWarning: rgb(161, 17, 17);
+
+$colorDark: #212210;
+$colorDarkDark: darken($colorDark, 8%);
+$colorDarkBright: lighten($colorDark, 8%);
+
+$colorBright: #f6f6f6;
+$colorBrightDark: darken($colorBright, 8%);
+$colorBrightBright: lighten($colorBright, 8%);
+
+$colorMap: (
+  colorPrimary: #41ddf1,
+  colorDark: #212210,
+  colorBright: #E0E2DB,
+  colorWarning: rgb(161, 17, 17),
+);
+
+$phoneBreakpoint: 480px;
+$tabletBreakpoint: 800px;
+$maxWidth: 1400px;

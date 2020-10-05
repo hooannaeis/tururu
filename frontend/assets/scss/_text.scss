@@ -1,0 +1,99 @@
+@import url("https://fonts.googleapis.com/css?family=Cormorant+Garamond|Reenie+Beanie&display=swap");
+
+body {
+  font-size: 16px;
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 400;
+}
+
+a {
+  color: $colorDark;
+  position: relative;
+  text-decoration: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
+}
+
+p {
+  margin: 0.2rem 0 0 0;
+}
+
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0.1rem;
+}
+
+input[disabled],
+textarea[disabled] {
+  cursor: not-allowed;
+}
+
+h1,
+.h1 {
+  font-size: 48px;
+}
+
+h2,
+.h2 {
+  font-size: 36px;
+
+  @media (max-width: 767px) {
+    font-size: 24px;
+  }
+}
+h3,
+.h3 {
+  font-size: 24px;
+}
+h4,
+.h4 {
+  font-size: 18px;
+}
+h5,
+.h5 {
+  font-size: 14px;
+}
+h6,
+.h6 {
+  font-size: 12px;
+}
+
+.txt-is-bright {
+  color: $colorBright;
+}
+
+.txt-is-primary {
+  color: $colorPrimary;
+}
+
+.txt-is-fancy {
+  font-family: "Reenie Beanie", cursive;
+}
+
+.txt-is-centered {
+  display: flex;
+  justify-content: center;
+}
+
+.txt-is-bold {
+  font-weight: bold;
+}
+
+.txt-is-error {
+  color: $colorWarning;
+  font-style: italic;
+}
+
+.input__field {
+  padding: 0.6rem;
+  border-radius: 0.6rem;
+  border: 1px solid $colorBrightDark;
+  &--error {
+    border: 2px solid $colorWarning;
+  }
+}
