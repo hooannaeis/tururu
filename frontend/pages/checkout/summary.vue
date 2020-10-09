@@ -78,8 +78,10 @@ export default {
       window.localStorage.setItem("summary", transactionId);
 
       // // finish tim's wonder button
-      if (twb && twb.trackSaviour) {
+      try{
         twb.trackSaviour(transactionId);
+      } catch(e) {
+        console.error(e);
       }
 
       this.$router.push({ path: "/checkout/confirmation" });
