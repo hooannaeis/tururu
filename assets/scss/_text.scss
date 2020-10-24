@@ -29,7 +29,8 @@ h6 {
 }
 
 input[disabled],
-textarea[disabled] {
+textarea[disabled],
+button[disabled] {
   cursor: not-allowed;
 }
 
@@ -96,4 +97,9 @@ h6,
   &--error {
     border: 2px solid $colorWarning;
   }
+}
+
+.error {
+  color: red;
+  font-weight: bold;
 }

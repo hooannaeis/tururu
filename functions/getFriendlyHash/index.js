@@ -44,3 +44,5 @@ exports.handler = async function (event, context) {
     body: `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}-${friendlyHash}`
   };
 }
+
+console.log(getFriendlyHash())

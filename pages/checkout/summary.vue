@@ -53,41 +53,65 @@
       </nuxt-link>
     </div>
 
-    <button class="btn btn--primary" @click="completeTransaction">order now</button>
+    <div class="error" v-if="error">
+      {{ error }}
+    </div>
+
+    <div class="grid__container--2c">
+      <span></span>
+      <button
+        class="btn"
+        :class="[loading ? 'btn--disabled' : 'btn--primary']"
+        @click="completeTransaction"
+      >
+        order now
+      </button>
+    </div>
   </div>
 </template>
 
 <script>
-import PaymentData from "@/components/PaymentData.vue";
-import PersonalizationData from "@/components/PersonalizationData.vue";
-import DeliveryData from "@/components/DeliveryData.vue";
-import ProgressIndicator from "@/components/ProgressIndicator.vue";
+import PaymentData from '@/components/PaymentData.vue';
+import PersonalizationData from '@/components/PersonalizationData.vue';
+import DeliveryData from '@/components/DeliveryData.vue';
+import ProgressIndicator from '@/components/ProgressIndicator.vue';
 
 export default {
+  data() {
+    return {
+      error: null,
+      loading: false
+    };
+  },
   components: {
     ProgressIndicator,
     PaymentData,
     DeliveryData,
-    PersonalizationData,
+    PersonalizationData
   },
   methods: {
-    completeTransaction: function () {
-      const transactionId = Math.ceil(Math.random() * 100000);
-      console.log("completing order: ", transactionId);
-      window.localStorage.setItem("summary", transactionId);
-
-      // // finish tim's wonder button
-      try{
-        twb.trackSaviour(transactionId);
-      } catch(e) {
+    async getTransactionId() {
+      const tidUrl =
+        'https://peaceful-wiles-7eb948.netlify.app/.netlify/functions/getFriendlyHash';
+      const now = new Date().getTime();
+      const tid = await this.$axios.$get(`${tidUrl}?inputSeed=${now}`);
+      return tid;
+    },
+    async completeTransaction() {
+      this.loading = true;
+      let transactionId = 'failed to retrieve transaction ID';
+      try {
+        transactionId = await this.getTransactionId();
+        console.log('completing order: ', transactionId);
+        window.localStorage.setItem('summary', transactionId);
+        this.$router.push({ path: '/checkout/confirmation' });
+      } catch (e) {
         console.error(e);
       }
-
-      this.$router.push({ path: "/checkout/confirmation" });
-    },
-  },
+      this.loading = false;
+    }
+  }
 };
 </script>
 
-<style>
-</style>
+<style></style>

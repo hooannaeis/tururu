@@ -19,7 +19,15 @@ module.exports = {
    ** Customize the progress-bar color
    */
   loading: { color: "#fff" },
-  modules: ["@nuxtjs/style-resources", ['@nuxtjs/google-tag-manager', { id: 'GTM-5S3BCJW', pageTracking: true }]],
+  modules: [
+    "@nuxtjs/style-resources",
+    [
+      '@nuxtjs/google-tag-manager', { 
+        id: 'GTM-5S3BCJW', 
+        pageTracking: true 
+    }],
+    '@nuxtjs/axios'
+  ],
   styleResources: {
     scss: ["assets/scss/main.scss"],
   },
