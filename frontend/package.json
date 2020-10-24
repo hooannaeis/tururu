@@ -7,9 +7,11 @@
     "start": "nuxt start"
   },
   "dependencies": {
-    "nuxt": "^2.14.6",
+    "@nuxtjs/google-tag-manager": "^2.3.2",
     "@nuxtjs/style-resources": "^1.0.0",
     "node-sass": "^4.13.1",
+    "nuxt": "^2.14.6",
+    "nuxt-google-tag-manager": "^0.1.0",
     "sass-loader": "^8.0.2"
   }
 }
