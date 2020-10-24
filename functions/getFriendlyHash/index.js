@@ -1,5 +1,5 @@
 const random = require('../../node_modules/random');
-const seedrandom = require('seedrandom');
+const seedrandom = require('../../node_modules/seedrandom');
 const { adjectives, animals } = require('./words');
 
 
