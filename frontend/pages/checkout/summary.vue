@@ -1,6 +1,5 @@
 <template>
   <div>
-    <script src="http://localhost:5000/index.js"></script>
     <ProgressIndicator />
     <div class="card__container">
       <h2>shopping list</h2>
