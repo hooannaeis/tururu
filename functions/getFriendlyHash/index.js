@@ -1,4 +1,4 @@
-const random = require('random');
+const random = require('../../node_modules/random');
 const seedrandom = require('seedrandom');
 const { adjectives, animals } = require('./words');
 
@@ -49,3 +49,5 @@ exports.handler = async function (event, context) {
     }
   };
 }
+
+console.log(getFriendlyHash(123));
