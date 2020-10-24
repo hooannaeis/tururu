@@ -39,13 +39,8 @@ exports.handler = async function (event, context) {
   const { inputSeed } = event.queryStringParameters || '';
   const friendlyHash = getFriendlyHash(inputSeed);
   const date = new Date();
-  const transactionId = `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}-${friendlyHash}`
   return {
     statusCode: 200,
-    body: {
-      success: true,
-      message: transactionId,
-      cachebuster: date,
-    }
+    body: `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}-${friendlyHash}`
   };
 }
