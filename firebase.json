@@ -1,0 +1,25 @@
+{
+  "functions": {},
+  "hosting": {
+    "public": "./frontend/dist",
+    "predeploy": ["npm run build --prefix frontend"],
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  },
+  "emulators": {
+    "functions": {
+      "port": 5001
+    },
+    "hosting": {
+      "port": 5000
+    },
+    "ui": {
+      "enabled": false
+    }
+  }
+}

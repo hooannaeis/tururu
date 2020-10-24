@@ -2,11 +2,12 @@ const random = require('random');
 const seedrandom = require('seedrandom');
 const { adjectives, animals } = require('./words');
 
+
 /**
  * @Method: Returns a random animal from the words list.
  * @returns {string}
  */
-function animal() {
+function getAnimal() {
   return animals[random.int(0, animals.length)];
 }
 
@@ -14,7 +15,7 @@ function animal() {
  * @Method: Returns a random adjective from the words list.
  * @returns {string}
  */
-function adjective() {
+function getAdjective() {
   return adjectives[random.int(0, adjectives.length)];
 }
 
@@ -31,34 +32,20 @@ function getFriendlyHash(inputSeed) {
   if (inputSeed) {
     random.use(seedrandom(inputSeed));
   }
-  return `${adjective()}-${animal()}`.toLowerCase();
+  return `${getAdjective()}-${getAnimal()}`.toLowerCase();
 }
 
-const main = async (req, res) => {
-  // Set CORS headers for preflight requests
-  // Allows GETs from any origin with the Content-Type header
-  // and caches preflight response for 3600s
-
-  res.set('Access-Control-Allow-Origin', '*');
-
-  if (req.method === 'OPTIONS') {
-    // Send response to OPTIONS requests
-    res.set('Access-Control-Allow-Methods', 'GET');
-    res.set('Access-Control-Allow-Headers', 'Content-Type');
-    res.set('Access-Control-Max-Age', '60');
-    res.status(204).send('');
-  }
-
-  const { inputSeed } = req.query || '';
+exports.handler = async function (event, context) {
+  const { inputSeed } = event.queryStringParameters || '';
   const friendlyHash = getFriendlyHash(inputSeed);
-  return res.status(200).json({
-    success: true,
-    message: friendlyHash,
-    cachebuster: new Date(),
-  });
-};
-
-module.exports = {
-  getFriendlyHash,
-  main,
-};
+  const date = new Date();
+  const transactionId = `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}-${friendlyHash}`
+  return {
+    statusCode: 200,
+    body: {
+      success: true,
+      message: transactionId,
+      cachebuster: date,
+    }
+  };
+}
