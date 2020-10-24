@@ -1,0 +1,19 @@
+{
+  "name": "getFriendlyHash",
+  "version": "1.0.0",
+  "description": "if you want to run the functions locally, start the emulator by",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "random": "^2.2.0",
+    "seedrandom": "^3.0.5"
+  }
+}

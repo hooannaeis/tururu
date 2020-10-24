@@ -1,5 +1,5 @@
-const random = require('../../node_modules/random');
-const seedrandom = require('../../node_modules/seedrandom');
+const random = require('random');
+const seedrandom = require('seedrandom');
 const { adjectives, animals } = require('./words');
 
 
@@ -49,5 +49,3 @@ exports.handler = async function (event, context) {
     }
   };
 }
-
-console.log(getFriendlyHash(123));

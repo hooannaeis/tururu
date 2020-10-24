@@ -1,12 +1,15 @@
 {
   "name": "tururu",
   "scripts": {
+    "prebuild" : "cd functions/getFriendlyHash && npm i",
     "dev": "nuxt",
     "build": "nuxt build",
     "generate": "nuxt generate",
     "start": "nuxt start"
   },
   "dependencies": {
+    "random": "^2.2.0",
+    "seedrandom": "^3.0.5",
     "@nuxtjs/google-tag-manager": "^2.3.2",
     "@nuxtjs/style-resources": "^1.0.0",
     "node-sass": "^4.13.1",
