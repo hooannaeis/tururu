@@ -90,6 +90,26 @@ export default {
     PersonalizationData
   },
   methods: {
+    pushTransaction(transactionId) {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'purchase',
+        ecommerce: {
+          currency: 'EUR',
+          value: 10.0,
+          shipping: 0,
+          transaction_id: transactionId,
+          items: [
+            {
+              item_name: 'tururu',
+              item_id: '1',
+              price: '10',
+              quantity: '1'
+            }
+          ]
+        }
+      });
+    },
     async getTransactionId() {
       const tidUrl =
         'https://peaceful-wiles-7eb948.netlify.app/.netlify/functions/getFriendlyHash';
@@ -104,9 +124,11 @@ export default {
         transactionId = await this.getTransactionId();
         console.log('completing order: ', transactionId);
         window.localStorage.setItem('summary', transactionId);
+        this.pushTransaction(transactionId);
         this.$router.push({ path: '/checkout/confirmation' });
       } catch (e) {
         console.error(e);
+        this.error = e;
       }
       this.loading = false;
     }

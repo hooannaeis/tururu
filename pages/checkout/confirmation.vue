@@ -18,12 +18,26 @@
 export default {
   data() {
     return {
-      transactionId: null
+      transactionId: null,
+      delivery: {
+        firstName: '',
+        lastName: '',
+        street: '',
+        zipCode: '',
+        city: '',
+        country: ''
+      }
     };
   },
   mounted() {
     try {
-      const transactionId = JSON.parse(localStorage.getItem('summary'));
+      const deliveryData = JSON.parse(localStorage.getItem('delivery'));
+
+      if (deliveryData) {
+        this.delivery = deliveryData;
+      }
+      
+      const transactionId = localStorage.getItem('summary');
       if (transactionId) {
         this.transactionId = transactionId;
       }
